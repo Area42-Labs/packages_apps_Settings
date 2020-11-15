@@ -3,7 +3,7 @@ allow hal_power_default proc:file rw_file_perms;
 allow hal_power_default proc:file { write };
 r_dir_file(hal_power_default, debugfs_rpm)
 r_dir_file(hal_power_default, sysfs_graphics)
-
+allow hal_power_default hal_power_default:capability { dac_override };
 
 # To do powerhint on nodes defined in powerhint.json
 allow hal_power_default sysfs_devfreq:dir search;
@@ -21,3 +21,4 @@ set_prop(hal_power_default, power_prop)
 
 # To dump
 allow hal_power_default cgroup:file read;
+
